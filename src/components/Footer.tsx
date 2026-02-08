@@ -11,7 +11,7 @@ export default function Footer() {
             className="text-xl font-bold gradient-text font-mono"
             whileHover={{ scale: 1.05 }}
           >
-            &lt;AG /&gt;
+            &lt;DG/&gt;
           </motion.a>
 
           <p className="text-sm text-muted-foreground flex items-center gap-1">
@@ -19,7 +19,7 @@ export default function Footer() {
           </p>
 
           <p className="text-sm text-muted-foreground font-mono">
-            © 2024 All rights reserved
+            © {new Date().getFullYear()} All rights reserved
           </p>
         </div>
       </div>

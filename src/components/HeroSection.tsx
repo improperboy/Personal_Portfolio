@@ -21,6 +21,12 @@ export default function HeroSection() {
 
     const tl = gsap.timeline({ delay: 0.3 });
 
+    gsap.set(textRef.current.children, {
+    opacity: 0,
+    y: 30,
+    force3D: false, // VERY IMPORTANT
+  });
+
     // Name letter animation
     tl.to(textRef.current.children, {
       opacity: 1,
@@ -28,6 +34,7 @@ export default function HeroSection() {
       stagger: 0.04,
       duration: 0.6,
       ease: 'power3.out',
+      clearProps: 'transform'
     });
 
     // Subtitle animation
@@ -110,7 +117,7 @@ export default function HeroSection() {
 
           {/* Name */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span ref={textRef} className="gradient-text glow-text transition-all duration-300 hover:scale-105 hover:bg-primary/20 hover:px-8 hover:py-2 hover:rounded-2xl cursor-pointer inline-block">
+            <span ref={textRef} className="gradient-text glow-text transition-all duration-300 hover: text-primaryhover:px-8 hover:py-2 hover:rounded-2xl cursor-pointer inline-block">
               Divyanshu Gupta
             </span>
           </h1>
