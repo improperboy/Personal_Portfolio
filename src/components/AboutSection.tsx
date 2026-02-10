@@ -101,10 +101,9 @@ export default function AboutSection() {
     <section id="about" ref={sectionRef} className="relative py-32 overflow-hidden">
       {/* Background accents */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
-      
+
       <div className="container mx-auto px-6">
         <div ref={headingRef} className="text-center mb-16">
-          <span className="text-primary font-mono text-sm mb-4 block">// ABOUT ME</span>
           <h2 className="section-heading">
             Turning Ideas Into <span className="gradient-text">Reality</span>
           </h2>
@@ -123,11 +122,11 @@ export default function AboutSection() {
                 Who I Am
               </h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                I am a full-stack web developer with strong backend expertise in PHP and MySQL. 
+                I am a full-stack web developer with strong backend expertise in PHP and MySQL.
                 My goal is to create practical and impactful digital solutions that solve real problems.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Currently working on advanced multi-role platforms, management systems, 
+                Currently working on advanced multi-role platforms, management systems,
                 and startup-oriented web products. I believe in building products that users love.
               </p>
             </div>
@@ -159,18 +158,18 @@ export default function AboutSection() {
           </div>
 
           {/* Right - Highlights Grid */}
-          <div ref={rightColRef} className="grid grid-cols-2 gap-4">
+          <div ref={rightColRef} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {highlights.map((item, index) => (
               <div
                 key={item.title}
                 ref={(el) => (cardsRef.current[index] = el)}
-                className="glass-card p-6 group hover:scale-105 transition-transform duration-300"
+                className="glass-card p-6 group hover-lift cursor-pointer"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <item.icon className="w-6 h-6 text-primary" />
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 border border-primary/20">
+                  <item.icon className="w-7 h-7 text-primary group-hover:text-secondary transition-colors" />
                 </div>
-                <h4 className="font-bold mb-2">{item.title}</h4>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
+                <h4 className="font-bold text-lg mb-2 text-hover-glow">{item.title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>

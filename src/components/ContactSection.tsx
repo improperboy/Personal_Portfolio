@@ -111,7 +111,6 @@ export default function ContactSection() {
 
       <div className="container mx-auto px-6">
         <div ref={headingRef} className="text-center mb-16">
-          <span className="text-primary font-mono text-sm mb-4 block">// GET IN TOUCH</span>
           <h2 className="section-heading">
             Let's Work <span className="gradient-text">Together</span>
           </h2>

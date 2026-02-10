@@ -22,10 +22,10 @@ export default function HeroSection() {
     const tl = gsap.timeline({ delay: 0.3 });
 
     gsap.set(textRef.current.children, {
-    opacity: 0,
-    y: 30,
-    force3D: false, // VERY IMPORTANT
-  });
+      opacity: 0,
+      y: 30,
+      force3D: false, // VERY IMPORTANT
+    });
 
     // Name letter animation
     tl.to(textRef.current.children, {
@@ -117,7 +117,7 @@ export default function HeroSection() {
 
           {/* Name */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span ref={textRef} className="gradient-text glow-text transition-all duration-300 hover: text-primaryhover:px-8 hover:py-2 hover:rounded-2xl cursor-pointer inline-block">
+            <span ref={textRef} className="gradient-text-animated text-hover-glow transition-all duration-300 inline-block">
               Divyanshu Gupta
             </span>
           </h1>
@@ -147,13 +147,14 @@ export default function HeroSection() {
           <div ref={buttonsRef} className="flex flex-wrap items-center justify-center gap-4 mb-12">
             <a
               href="#projects"
-              className="px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-lg transition-all hover:shadow-lg hover:shadow-primary/30 hover:scale-105 hover:-translate-y-1 glow-box"
+              className="px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-lg hover-lift neon-glow relative overflow-hidden group"
             >
-              View My Work
+              <span className="relative z-10">View My Work</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </a>
             <a
               href="#contact"
-              className="px-8 py-4 rounded-full glass-card font-semibold text-lg transition-all hover:bg-muted/50 hover:scale-105 hover:-translate-y-1 glow-border"
+              className="px-8 py-4 rounded-full glass-card font-semibold text-lg hover-lift backdrop-blur-glass border-2 border-primary/30 hover:border-primary/60 transition-all"
             >
               Get In Touch
             </a>

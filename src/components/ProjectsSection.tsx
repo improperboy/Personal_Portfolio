@@ -65,10 +65,10 @@ const projects = [
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
   return (
     <div
-      className={`project-card group ${project.featured ? 'md:col-span-2 md:row-span-2' : ''}`}
+      className={`project-card hover-lift group relative ${project.featured ? 'md:col-span-2 md:row-span-2' : ''}`}
     >
       {project.featured && (
-        <div className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-mono">
+        <div className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary/30 to-secondary/30 backdrop-blur-sm text-primary text-xs font-mono border border-primary/30 neon-glow">
           <Star size={12} fill="currentColor" />
           Featured
         </div>
@@ -76,10 +76,10 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
       <div className="space-y-4">
         <div>
-          <span className={`text-xs font-mono ${project.color === 'primary' ? 'text-primary' : 'text-secondary'}`}>
+          <span className={`text-xs font-mono font-semibold ${project.color === 'primary' ? 'text-primary' : 'text-secondary'}`}>
             {project.subtitle}
           </span>
-          <h3 className={`text-2xl font-bold mt-1 ${project.featured ? 'md:text-3xl' : ''}`}>
+          <h3 className={`text-2xl font-bold mt-1 text-hover-glow ${project.featured ? 'md:text-3xl lg:text-4xl' : ''}`}>
             {project.title}
           </h3>
         </div>
@@ -90,7 +90,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
         <ul className="flex flex-wrap gap-2">
           {project.features.map((feature) => (
-            <li key={feature} className="text-xs px-2 py-1 rounded-md bg-muted text-muted-foreground">
+            <li key={feature} className="text-xs px-3 py-1.5 rounded-lg bg-muted/70 text-muted-foreground hover:bg-muted transition-colors">
               {feature}
             </li>
           ))}
@@ -98,23 +98,23 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
 
         <div className="flex flex-wrap gap-2 pt-2">
           {project.tech.map((t) => (
-            <span key={t} className="tech-badge text-xs">
+            <span key={t} className="tech-badge text-xs hover:scale-105 transition-transform">
               {t}
             </span>
           ))}
         </div>
 
-        <div className="flex items-center gap-4 pt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex items-center gap-4 pt-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
           <a
             href="#"
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors hover:scale-110"
           >
             <Github size={16} />
             Code
           </a>
           <a
             href="#"
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-secondary transition-colors hover:scale-110"
           >
             <ExternalLink size={16} />
             Live Demo
@@ -154,8 +154,8 @@ export default function ProjectsSection() {
       if (cards) {
         gsap.fromTo(
           cards,
-          { 
-            opacity: 0, 
+          {
+            opacity: 0,
             y: 100,
             rotateX: 15,
             transformPerspective: 1000,
@@ -190,7 +190,6 @@ export default function ProjectsSection() {
 
       <div className="container mx-auto px-6">
         <div ref={headingRef} className="text-center mb-16">
-          <span className="text-primary font-mono text-sm mb-4 block">// MY WORK</span>
           <h2 className="section-heading">
             Featured <span className="gradient-text">Projects</span>
           </h2>

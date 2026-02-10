@@ -190,7 +190,6 @@ export default function SkillsSection() {
 
       <div className="container mx-auto px-6">
         <div ref={headingRef} className="text-center mb-16">
-          <span className="text-primary font-mono text-sm mb-4 block">// EXPERTISE</span>
           <h2 className="section-heading">
             Technical <span className="gradient-text">Skills</span>
           </h2>
