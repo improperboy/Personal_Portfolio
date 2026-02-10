@@ -13,7 +13,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const { isLoading, handleLoadingComplete } = useLoading(2000);
+  const { isLoading, handleLoadingComplete } = useLoading(3000);
 
   return (
     <QueryClientProvider client={queryClient}>
