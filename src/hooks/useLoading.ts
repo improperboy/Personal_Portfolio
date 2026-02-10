@@ -2,37 +2,19 @@ import { useState, useEffect } from 'react';
 
 export const useLoading = (minimumLoadingTime = 2000) => {
     const [isLoading, setIsLoading] = useState(true);
-    const [assetsLoaded, setAssetsLoaded] = useState(false);
 
     useEffect(() => {
-        // Set minimum loading time
+        // Force minimum loading time - loading screen will always show for this duration
         const timer = setTimeout(() => {
-            setAssetsLoaded(true);
+            setIsLoading(false);
         }, minimumLoadingTime);
-
-        // Also check for actual page load
-        const handleLoad = () => {
-            setAssetsLoaded(true);
-        };
-
-        if (document.readyState === 'complete') {
-            handleLoad();
-        } else {
-            window.addEventListener('load', handleLoad);
-        }
 
         return () => {
             clearTimeout(timer);
-            window.removeEventListener('load', handleLoad);
         };
     }, [minimumLoadingTime]);
 
-    const handleLoadingComplete = () => {
-        setIsLoading(false);
-    };
-
     return {
-        isLoading: isLoading && !assetsLoaded,
-        handleLoadingComplete,
+        isLoading,
     };
 };

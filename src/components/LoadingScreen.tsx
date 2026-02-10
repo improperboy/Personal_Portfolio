@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface LoadingScreenProps {
-    onLoadingComplete: () => void;
+    onLoadingComplete?: () => void;
 }
 
 const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
@@ -10,22 +10,23 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
     const [isComplete, setIsComplete] = useState(false);
 
     useEffect(() => {
-        // Simulate loading progress
+        // Simulate loading progress over ~3 seconds
         const interval = setInterval(() => {
             setProgress((prev) => {
                 if (prev >= 100) {
                     clearInterval(interval);
                     setTimeout(() => {
                         setIsComplete(true);
-                        setTimeout(onLoadingComplete, 800);
-                    }, 500);
+                        onLoadingComplete?.();
+                    }, 200);
                     return 100;
                 }
                 // Randomize progress increments for realistic feel
-                const increment = Math.random() * 15 + 5;
+                // Increment values adjusted to complete in ~3 seconds
+                const increment = Math.random() * 4 + 3;
                 return Math.min(prev + increment, 100);
             });
-        }, 200);
+        }, 150);
 
         return () => clearInterval(interval);
     }, [onLoadingComplete]);

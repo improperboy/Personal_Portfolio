@@ -13,7 +13,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const { isLoading, handleLoadingComplete } = useLoading(3000);
+  const { isLoading } = useLoading(3000);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -22,7 +22,7 @@ const App = () => {
         <Sonner />
 
         {/* Loading Screen */}
-        {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
+        {isLoading && <LoadingScreen />}
 
         {/* Main Content with Fade In Animation */}
         <AnimatePresence>
